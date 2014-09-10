@@ -1,0 +1,18 @@
+extends layout
+block content
+    p
+    div.container-fluid
+        div.row
+            div.col-lg-6
+                h1= "Download Images"
+                form.form-horizontal(action="/imagesUrl", method="post")
+                    p
+                        input.form-control(type="text", name="url", placeholder="Url")
+                    p
+                        button.btn.btn-warning(type="submit") Submit
+                    p
+                form.form-horizontal(action="/downloadImages", method="post")
+                    p
+                        button.btn.btn-warning(type="submit") Get Images
+
+            div.col-lg-6
