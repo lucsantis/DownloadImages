@@ -32,15 +32,17 @@ downloadPageContent(url, function(data) {
      if (data) {
           //console.log(data);
           var str;
-          var website = "www.emol.com";
+          var website = url;
           str = data;
+          var sStr = '';
             while (matches = rEx.exec(str)) {
                 var crtUrl = matches[1];
+                sStr = crtUrl.lastIndexOf(".");
                 var count = crtUrl.match(/http/);
-                if(!count){
-                    crtUrl = "http://" + website + crtUrl;
 
-                    downloadImages(crtUrl, Math.random().toString(36).substr(7) + ".jpg", function(){
+                if(!count){
+                    crtUrl = website + crtUrl;
+                    downloadImages(crtUrl, Math.random().toString(36).substr(6) + ".jpg", function(){
                         console.log("Image downloaded!");
                     });
                 }
@@ -61,7 +63,7 @@ downloadPageContent(url, function(data) {
 });
 
 /*
-
+ /////////////////////////////////////////////////////////////////////////////////////////////////
  */
 router.get('/downloadImages', function(req, res){
 //    fs.readFile('./images_urls.txt', 'utf8', function(err, text){
